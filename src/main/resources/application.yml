@@ -1,0 +1,25 @@
+server:
+  port: 34102
+spring:
+  application:
+    name: vlp-course-service
+  datasource:
+    url: jdbc:h2:file:./src/main/resources/data/course-db;AUTO_SERVER=true
+    username: vlp
+    password: vlp
+    driver-class-name: org.h2.Driver
+  jpa:
+    database: h2
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  h2:
+    console:
+      enabled: true
+management:
+  server:
+    port: 44102
