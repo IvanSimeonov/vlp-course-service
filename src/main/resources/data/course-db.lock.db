@@ -1,6 +1,0 @@
-#FileLock
-#Tue Jul 18 14:37:38 EEST 2023
-server=10.244.1.4\:54822
-hostName=10.244.1.4
-method=file
-id=18968caa5d1001deba900221502bb23c254ae1f5e3c

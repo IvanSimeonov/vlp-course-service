@@ -1,10 +1,11 @@
 package bg.ivnsim.vlp.courseservice.course.entity;
 
+import bg.ivnsim.vlp.courseservice.lecture.entity.Lecture;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Project: VLP
@@ -23,12 +24,12 @@ import lombok.NoArgsConstructor;
  * To change this template use File | Settings | File Templates.
  */
 
-@Data
-@Builder
-@NoArgsConstructor
+@Getter
+@Setter
+@RequiredArgsConstructor
 @AllArgsConstructor
-@Entity
-@Table(name = "courses")
+@Entity(name = "Course")
+@Table(name = "course")
 public class Course {
 
     @Id
@@ -37,5 +38,21 @@ public class Course {
 
     private String title;
 
-    private String description;
+    @OneToMany(
+        mappedBy = "course",
+        cascade = CascadeType.ALL,
+        orphanRemoval = true
+    )
+    private List<Lecture> lectures = new ArrayList<>();
+
+    public void addLecture(Lecture lecture) {
+        lectures.add(lecture);
+        lecture.setCourse(this);
+    }
+
+    public void removeLecture(Lecture lecture) {
+        lectures.remove(lecture);
+        lecture.setCourse(null);
+    }
+
 }

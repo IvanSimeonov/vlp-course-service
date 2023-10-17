@@ -1,6 +1,7 @@
 package bg.ivnsim.vlp.courseservice.course.service;
 
 import bg.ivnsim.vlp.courseservice.course.dto.CourseDTO;
+import bg.ivnsim.vlp.courseservice.course.dto.CoursePageDTO;
 
 import java.util.List;
 
@@ -31,11 +32,22 @@ public interface CourseService {
     CourseDTO createCourse(CourseDTO courseDTO);
 
     /**
+     * Retrieve courses in pageable format
+     *
+     * @param page          - the number of the requested page
+     * @param size          - the amount of courses on the requested page
+     * @param sortBy        - the field for sorting the courses
+     * @param sortDirection - the direction of the sorting (asc, desc)
+     * @return a list of all course data
+     */
+    CoursePageDTO getCourses(Integer page, Integer size, String sortBy, String sortDirection);
+
+    /**
      * Retrieve all courses
      *
      * @return a list of all course data
      */
-    List<CourseDTO> getCourses();
+    List<CourseDTO> getAllCourses();
 
     /**
      * Retrieve a course by id

@@ -1,7 +1,10 @@
 package bg.ivnsim.vlp.courseservice.course.dto;
 
+import bg.ivnsim.vlp.courseservice.lecture.entity.Lecture;
 import lombok.Builder;
 import lombok.Data;
+
+import java.util.List;
 
 /**
  * Project: VLP
@@ -25,4 +28,5 @@ public class CourseDTO {
     private Long id;
     private String title;
     private String description;
+    private List<Lecture> lectures;
 }
